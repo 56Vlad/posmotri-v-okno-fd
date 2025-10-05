@@ -9,13 +9,18 @@ html {
 }
 
 .page {
+  display: flex;
+
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid greenyellow;
 }
 
 h1,
@@ -47,5 +52,309 @@ ol {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
+}
+
+.content {
+  display: flex;
+  align-items: flex-end;
+  width: 1140px;
+  gap: 30px;
+}
+
+.result {
+  width: 711px;
+}
+
+.result__video-container {
+  width: 711px;
+  height: 386px;
+  margin-bottom: 16px;
+}
+
+.result__video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.content__details {
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  margin-bottom: 26px;
+  font-family: "Oswald";
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 94%;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.content__card-link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.content__video-card-title {
+  font-family: "Oswald";
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.content__video-card-description {
+  /* какая-то дичь с шрифтом, отступ не бьется, толщина не та*/
+  font-family: "Fira Sans Condensed";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 16.2px;
+  letter-spacing: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.search-form {
+  height: 54px; /* не хватает размера для нужного положения*/
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.search-form__fieldset-title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.content__video-card-description-container {
+  width: 103px; /* размер чтобы элементы не вылетали за границы*/
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content__list-container {
+  height: 298px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.content__video-card {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.content__video-card-thumbnail {
+  min-width: 194px;
+  height: 103px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+}
+
+.search-form__fieldset {
+  border: none;
+}
+
+.search-form__label {
+  margin-top: 7.5px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 1.5px;
+}
+
+.search-form__label:has(.search-form__textfield:focus-visible) {
+  outline: 1px solid #ffffff;
+  outline-offset: 2px;
+}
+/*не реализуется - комментарии от наставников 
+- такое поведение норм - https://codepen.io/michai/pen/eYgLPBG*/
+/*как реализовать фокус для чекбоксов, комбинации с хез ломают элементы
+при других опциях тк боксы скрыты то нет возможности активировать выделение
+через оператор возможно тут не проходит активация связанная с малым весом
+элементов, не могу разобрать*/
+.search-form__textfield {
+  appearance: none;
+  padding: 0px;
+  min-width: 225px; /*пока не ясно, что обрезает поле ввода - ширина ручная*/
+  min-height: 27px;
+  font-family: inherit;
+  color: #fff;
+  background-color: transparent;
+  font-size: 18px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  border-right: none;
+  border-left: none;
+}
+
+.search-form__textfield:hover {
+  background-color: green;
+}
+
+.search-form__pseudo-checkbox {
+  width: 19px;
+  height: 19px;
+  border: 1px white solid;
+  padding: 1px;
+}
+
+.search-form__pseudo-checkbox::after {
+  display: block;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  content: "";
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  opacity: 1;
+}
+
+.search-form__pseudo-checkbox:hover {
+  background-color: green;
+}
+
+.search-form__label-text:hover {
+  text-decoration: underline;
+}
+
+.search-form__pseudo-checkbox:hover + .search-form__label-text {
+  text-decoration: underline;
+}
+
+.search-form__textfield::placeholder {
+  color: rgb(255 255 255 / 0.7);
+}
+
+.search-form__textfield:focus {
+  outline: none;
+  color: rgb(255 255 255 / 0.7);
+  caret-color: yellow;
+}
+
+.button {
+  border: 1px solid #fff;
+  background-color: transparent;
+  font-family: Fira Sans Condensed;
+  font-weight: 700;
+
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-align: center;
+  color: #ffffff;
+}
+
+.search-form__submit-button {
+  min-width: 194px;
+  min-height: 34px;
+  align-self: flex-end;
+}
+
+.more-button {
+  font-family: Fira Sans Condensed;
+  font-weight: 700;
+
+  font-size: 18px;
+
+  line-height: 100%;
+  letter-spacing: 0;
+  text-align: center;
+  min-height: 34px;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:active {
+  background-color: #545050;
+  outline: 1px solid #ffffff;
+}
+
+.button:focus {
+  border: none;
+}
+
+.button:focus-visible {
+  outline: 3px double #ffffff;
+  outline-offset: -3px;
+}
+
+.content__list-item {
+  padding: 0px 3px;
+}
+
+.content__card-link {
+  display: block;
+}
+
+.content__card-link_current {
+  background-color: #545050;
+}
+
+.content__card-link:active {
+  background-color: #545050;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+}
+
+.content__card-link:focus {
+  border: none;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #ffffff;
+}
+
+.result__video-container {
+  position: relative;
+}
+
+.content__list-container {
+  position: relative;
 }
