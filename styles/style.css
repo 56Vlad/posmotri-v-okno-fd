@@ -10,7 +10,6 @@ html {
 
 .page {
   display: flex;
-
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
@@ -20,7 +19,6 @@ html {
   background-color: #1b1919;
   justify-content: center;
   align-items: center;
-  border: 1px solid greenyellow;
 }
 
 h1,
@@ -85,7 +83,7 @@ ol {
 
 .title {
   margin-bottom: 26px;
-  font-family: "Oswald";
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 75px;
   line-height: 94%;
@@ -96,10 +94,14 @@ ol {
 .content__card-link {
   text-decoration: none;
   color: #ffffff;
+  max-width: 390px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .content__video-card-title {
-  font-family: "Oswald";
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 30px;
   line-height: 100%;
@@ -112,7 +114,7 @@ ol {
 
 .content__video-card-description {
   /* какая-то дичь с шрифтом, отступ не бьется, толщина не та*/
-  font-family: "Fira Sans Condensed";
+  font-family: "Fira Sans Condensed",  sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 16.2px;
@@ -129,7 +131,9 @@ ol {
 }
 
 .search-form {
-  height: 54px; /* не хватает размера для нужного положения*/
+  /*height: 54px; не хватает размера для нужного положения - убрал, 
+  после проработки кода до финала - удаление прошло безболежненно,
+   смещение 1px,  */
   display: flex;
   justify-content: space-between;
   align-items: start;
@@ -188,7 +192,11 @@ ol {
 
 .search-form__checkbox-list {
   display: flex;
-  gap: 15px;
+  gap: 20px; /*изменено для наложения*/
+  min-width: 212px; /*теперь совпадает, пришлось играть размером, 
+  хотя проблема не совподения, похоже из-за шрифта и его межбуквенного
+  интервала...*/
+  /*у плеера не совпадают элементы управления - это можно подправить?*/
 }
 
 .search-form__fieldset {
@@ -203,33 +211,34 @@ ol {
   gap: 1.5px;
 }
 
-.search-form__label:has(.search-form__textfield:focus-visible) {
-  outline: 1px solid #ffffff;
-  outline-offset: 2px;
-}
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  }
 /*не реализуется - комментарии от наставников 
 - такое поведение норм - https://codepen.io/michai/pen/eYgLPBG*/
 /*как реализовать фокус для чекбоксов, комбинации с хез ломают элементы
 при других опциях, тк боксы скрыты то нет возможности активировать выделение
 через оператор возможно тут не проходит активация связанная с малым весом
 элементов, не могу разобрать ___*/
+/*--это какое-то чудо после подсказки - заработало, я уверен что пробовал 
+предложенный вариант не однократно, и результата не было.
+либо как-то складываются команды в финале кода и свойство начинает рабоать,
+либо перезагрузка компьютера творит чудеса, но может конечно
+я по усталости глупо упускал пунктуацию и код не работал...
+спасибо!*/
 .search-form__textfield {
   appearance: none;
   padding: 0px;
   min-width: 225px; /*пока не ясно, что обрезает поле ввода - ширина ручная*/
   min-height: 27px;
   font-family: inherit;
-  color: #fff;
+  color: currentColor;
   background-color: transparent;
   font-size: 18px;
   border-top: 1px solid #ffffff;
   border-bottom: 1px solid #ffffff;
   border-right: none;
   border-left: none;
-}
-
-.search-form__textfield:hover {
-  background-color: green;
 }
 
 .search-form__pseudo-checkbox {
@@ -252,10 +261,6 @@ ol {
   opacity: 1;
 }
 
-.search-form__pseudo-checkbox:hover {
-  background-color: green;
-}
-
 .search-form__label-text:hover {
   text-decoration: underline;
 }
@@ -270,16 +275,14 @@ ol {
 
 .search-form__textfield:focus {
   outline: none;
-  color: rgb(255 255 255 / 0.7);
   caret-color: yellow;
 }
 
 .button {
   border: 1px solid #fff;
   background-color: transparent;
-  font-family: Fira Sans Condensed;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-weight: 700;
-
   font-size: 18px;
   line-height: 100%;
   letter-spacing: 0;
@@ -294,14 +297,6 @@ ol {
 }
 
 .more-button {
-  font-family: Fira Sans Condensed;
-  font-weight: 700;
-
-  font-size: 18px;
-
-  line-height: 100%;
-  letter-spacing: 0;
-  text-align: center;
   min-height: 34px;
 }
 
